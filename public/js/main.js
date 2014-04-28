@@ -55,6 +55,32 @@ var sidebar = L.control.sidebar("sidebar", {
   position: "left"
 }).addTo(map);
 
+// Leaflet Draw.
+var drawnItems = new L.FeatureGroup();
+map.addLayer(drawnItems);
+
+// Initialise the draw control and pass it the FeatureGroup of editable layers
+var drawControl = new L.Control.Draw({
+  draw: {
+    polyline: false,
+    polygon: false,
+    rectangle: false,
+    circle: false,
+    marker: { zIndexOffset: 9000 }
+  },
+});
+map.addControl(drawControl);
+
+map.on('draw:created', function (e) {
+  var type = e.layerType,
+    layer = e.layer;
+  drawnItems.addLayer(layer);
+});
+
+map.on('draw:drawstart', function(e) {
+  drawnItems.clearLayers();
+});
+
 /* Placeholder hack for IE */
 if (navigator.appName == "Microsoft Internet Explorer") {
   $("input").each(function () {
