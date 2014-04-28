@@ -2,14 +2,14 @@ var map;
 
 var populationLayer = L.geoJson(popTracts, {style: tractStyle});
 var stopsLayer = L.geoJson(trimetStops);
-//var vetsLayer = L.geoJson(vets);
+var vetsLayer = L.geoJson(vets);
 var parksLayer = L.geoJson(pdxParks);
 var petstoreLayer = L.geoJson(petStores);
 
 var overlayMaps = {
   "Number of People": populationLayer,
   "Bus Stops": stopsLayer,
-  //"Animal Doctors": vetsLayer,
+  "Vets": vetsLayer,
   "Parks": parksLayer,
   "Pet Stores": petstoreLayer
 };
