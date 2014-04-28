@@ -3,7 +3,7 @@ var map;
 var populationLayer = L.geoJson(popTracts, {style: tractStyle});
 var stopsLayer = L.geoJson(trimetStops);
 var vetsLayer = L.geoJson(vets);
-var parksLayer = L.geoJson(pdxParks);
+var parksLayer = L.geoJson(pdxParks, {style: parksStyle});
 var petstoreLayer = L.geoJson(petStores);
 
 var overlayMaps = {
@@ -21,7 +21,7 @@ map = L.map("map", {
   center: [45.518867, -122.665408]
 });
 var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
-var layerControl = L.control.layers(overlayMaps).addTo(map);
+var layerControl = L.control.layers({}, overlayMaps).addTo(map);
 
 function getColor(d) {
     return d > 5000 ? '#800026' :
@@ -43,6 +43,16 @@ function tractStyle(feature) {
         dashArray: '3',
         fillOpacity: 0.6
     };
+}
+
+function parksStyle(feature) {
+  return {
+    fillColor: "#18A866",
+    weight: 1,
+    opacity: 0.7,
+    color: '#18A866',
+    fillOpacity: 0.6
+  };
 }
 
 // L.geoJson(populationLayer, {style: style}).addTo(map);
