@@ -56,7 +56,6 @@ var sidebar = L.control.sidebar("sidebar", {
 }).addTo(map);
 
 // Leaflet Draw.
-
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 
@@ -69,18 +68,18 @@ var drawControl = new L.Control.Draw({
     circle: false,
     marker: { zIndexOffset: 9000 }
   },
-  edit: {
-    featureGroup: drawnItems
-  }
 });
 map.addControl(drawControl);
 
 map.on('draw:created', function (e) {
   var type = e.layerType,
     layer = e.layer;
-  map.addLayer(layer);
+  drawnItems.addLayer(layer);
 });
 
+map.on('draw:drawstart', function(e) {
+  drawnItems.clearLayers();
+});
 
 /* Placeholder hack for IE */
 if (navigator.appName == "Microsoft Internet Explorer") {
