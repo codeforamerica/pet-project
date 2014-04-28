@@ -122,6 +122,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 #layer-control {
+  /*font-family: 'Lora', 'serif';*/
   position: absolute;
   z-index: 800;
   margin-top: 500px;
@@ -131,6 +132,11 @@ input[type="radio"], input[type="checkbox"] {
 #layer-control img {
   height: 40px;
   min-width: 10px;
+}
+
+#layer-control button {
+  /*color: #f9d0ce;*/
+  color: white;
 }
 
 @media (max-width: 992px) {
