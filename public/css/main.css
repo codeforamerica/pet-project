@@ -36,6 +36,10 @@ input[type="radio"], input[type="checkbox"] {
   color: #FFF !important;
 }
 
+.navbar-right {
+  padding-right: 10px;
+}
+
 .navbar-brand img {
   max-height: 35px;
   padding-right: 10px;
