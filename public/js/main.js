@@ -76,8 +76,13 @@ if (navigator.appName == "Microsoft Internet Explorer") {
 }
 
 (function(tracts){
-  var population = new PetProject.Collections.Scorable();
+  var adoptions = 0;
+  var shelter = new PetProject.Models.Feature({geometry: {coordinates: [45.518867, -122.665408]}});
+  var population = new PetProject.Collections.PopulationScorable();
   population.reset(population.parse(tracts));
 
-  console.log(population.toMultiplier());
+  setInterval(function(){
+    adoptions += population.toMultiplier(shelter)
+    console.log("adoptions: " + population.toMultiplier(shelter));
+  }, 250);
 })(popTracts);

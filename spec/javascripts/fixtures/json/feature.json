@@ -1,1 +1,17 @@
-{}
+{
+  "type": "Feature",
+  "properties": {
+    "stop_id": 5080,
+    "stop_name": "NE Sandy & 33rd",
+    "jurisdic": "Portland",
+    "zipcode": "97232",
+    "type": "BUS"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -122.686434,
+      45.512014
+    ]
+  }
+}
