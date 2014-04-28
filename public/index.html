@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css">
+    <link rel="stylesheet" href="vendor/leaflet-draw/leaflet.draw.css">
     <link rel="stylesheet" href="vendor/leaflet-sidebar/L.Control.Sidebar.css">
     <link rel="stylesheet" href="css/main.css">
 
@@ -38,7 +39,7 @@
       </div>
       <div class="navbar-collapse collapse">
           <div class="navbar-right">
-              <h3>You have saved 400 pets!</h3>
+              <h3>You have saved <span id="adoption-count">0</span> pets!</h3>
           </div>
         <ul class="nav navbar-nav">
           <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;"><i class="fa fa-question-circle" style="color: white"></i>&nbsp;&nbsp;About</a></li>
@@ -193,15 +194,17 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
+    <script src="vendor/leaflet-draw/leaflet.draw.js"></script>
     <script src="vendor/leaflet-sidebar/L.Control.Sidebar.js"></script>
     <script src="data/pdx-pop-tracts.js"></script>
-    <script src="data/trimet-stops.js"></script>
+    <script src="data/petstores.js"></script>
     <script src="js/vendor/_underscore.js"></script>
     <script src="js/vendor/backbone.js"></script>
     <script src="js/app/petproject.js"></script>
     <script src="js/app/models/feature.js"></script>
     <script src="js/app/models/population_feature.js"></script>
-    <script src="js/app/collections/scorable.js"></script>
+    <script src="js/app/collections/_scorable.js"></script>
+    <script src="js/app/collections/population_scorable.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

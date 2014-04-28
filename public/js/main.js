@@ -55,6 +55,32 @@ var sidebar = L.control.sidebar("sidebar", {
   position: "left"
 }).addTo(map);
 
+// Leaflet Draw.
+var drawnItems = new L.FeatureGroup();
+map.addLayer(drawnItems);
+
+// Initialise the draw control and pass it the FeatureGroup of editable layers
+var drawControl = new L.Control.Draw({
+  draw: {
+    polyline: false,
+    polygon: false,
+    rectangle: false,
+    circle: false,
+    marker: { zIndexOffset: 9000 }
+  },
+});
+map.addControl(drawControl);
+
+map.on('draw:created', function (e) {
+  var type = e.layerType,
+    layer = e.layer;
+  drawnItems.addLayer(layer);
+});
+
+map.on('draw:drawstart', function(e) {
+  drawnItems.clearLayers();
+});
+
 /* Placeholder hack for IE */
 if (navigator.appName == "Microsoft Internet Explorer") {
   $("input").each(function () {
@@ -72,12 +98,13 @@ if (navigator.appName == "Microsoft Internet Explorer") {
 
 (function(tracts){
   var adoptions = 0;
-  var shelter = new PetProject.Models.Feature({geometry: {coordinates: [45.518867, -122.665408]}});
+  var petStore = petStores.features[0];
+  var shelter = new PetProject.Models.Feature(petStore);
   var population = new PetProject.Collections.PopulationScorable();
   population.reset(population.parse(tracts));
 
   setInterval(function(){
-    adoptions += population.toMultiplier(shelter)
-    console.log("adoptions: " + population.toMultiplier(shelter));
+    adoptions += population.toMultiplier(shelter);
+    $('#adoption-count').text(Math.floor(adoptions / 10000));
   }, 250);
 })(popTracts);
