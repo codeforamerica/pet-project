@@ -72,12 +72,13 @@ if (navigator.appName == "Microsoft Internet Explorer") {
 
 (function(tracts){
   var adoptions = 0;
-  var shelter = new PetProject.Models.Feature({geometry: {coordinates: [45.518867, -122.665408]}});
+  var petStore = petStores.features[0];
+  var shelter = new PetProject.Models.Feature(petStore);
   var population = new PetProject.Collections.PopulationScorable();
   population.reset(population.parse(tracts));
 
   setInterval(function(){
-    adoptions += population.toMultiplier(shelter)
-    console.log("adoptions: " + population.toMultiplier(shelter));
+    adoptions += population.toMultiplier(shelter);
+    $('#adoption-count').text(Math.floor(adoptions / 10000));
   }, 250);
 })(popTracts);

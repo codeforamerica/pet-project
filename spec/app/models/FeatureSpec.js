@@ -25,8 +25,8 @@ describe("PetProject.Models.Feature", function(){
 
     describe("#toBounds", function(){
       it("returns bounds for the feature", function(){
-        expect(this.feature.toBounds()._southWest.lat).toEqual(-122.686434);
-        expect(this.feature.toBounds()._southWest.lng).toEqual(45.512014);
+        expect(this.feature.toBounds()._southWest.lng).toEqual(-122.686434);
+        expect(this.feature.toBounds()._southWest.lat).toEqual(45.512014);
       });
     });
   });
