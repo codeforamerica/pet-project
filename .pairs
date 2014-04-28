@@ -1,0 +1,10 @@
+pairs:
+  ld: Lyzi Diamond; lyzi
+  dr: Doc Ritezel; doc
+  amp: Anna-Marie Panlilio
+
+email:
+  prefix: pair
+  domain: coderforamerica.org
+
+global: true
