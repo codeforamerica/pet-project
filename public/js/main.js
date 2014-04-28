@@ -55,10 +55,6 @@ var sidebar = L.control.sidebar("sidebar", {
   position: "left"
 }).addTo(map);
 
-// Leaflet Draw.
-var drawnItems = new L.FeatureGroup();
-map.addLayer(drawnItems);
-
 // Initialise the draw control and pass it the FeatureGroup of editable layers
 var drawControl = new L.Control.Draw({
   draw: {
@@ -70,6 +66,10 @@ var drawControl = new L.Control.Draw({
   },
 });
 map.addControl(drawControl);
+
+// Leaflet Draw.
+var drawnItems = new L.FeatureGroup();
+map.addLayer(drawnItems);
 
 map.on('draw:created', function (e) {
   var type = e.layerType,
@@ -98,13 +98,15 @@ if (navigator.appName == "Microsoft Internet Explorer") {
 
 (function(tracts){
   var adoptions = 0;
-  var petStore = petStores.features[0];
-  var shelter = new PetProject.Models.Feature(petStore);
   var population = new PetProject.Collections.PopulationScorable();
   population.reset(population.parse(tracts));
 
   setInterval(function(){
-    adoptions += population.toMultiplier(shelter);
-    $('#adoption-count').text(Math.floor(adoptions / 10000));
+    var petStore = drawnItems.toGeoJSON().features[0];
+    if (petStore) {
+      var shelter = new PetProject.Models.Feature(petStore);
+      adoptions += population.toMultiplier(shelter);
+      $('#adoption-count').text(Math.floor(adoptions / 10000));
+    }
   }, 250);
 })(popTracts);
