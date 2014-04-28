@@ -55,11 +55,6 @@ var sidebar = L.control.sidebar("sidebar", {
   position: "left"
 }).addTo(map);
 
-/* Highlight search box text on click */
-$("#searchbox").click(function () {
-  $(this).select();
-});
-
 /* Placeholder hack for IE */
 if (navigator.appName == "Microsoft Internet Explorer") {
   $("input").each(function () {
