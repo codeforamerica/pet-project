@@ -1,16 +1,39 @@
 var map;
 
-var populationLayer = L.geoJson(popTracts);
+var populationLayer = L.geoJson(popTracts, {style: style});
 //var stopsLayer = L.geoJson(trimetStops);
 
 /* Overlay Layers */
 
 map = L.map("map", {
-  zoom: 10,
+  zoom: 14,
   center: [45.518867, -122.665408]
 });
 var basemapTiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/codeforamerica.i3l4b022/{z}/{x}/{y}.png').addTo(map);
 
+function getColor(d) {
+    return d > 5000 ? '#800026' :
+           d > 4000  ? '#BD0026' :
+           d > 3000  ? '#E31A1C' :
+           d > 2000  ? '#FC4E2A' :
+           d > 1000   ? '#FD8D3C' :
+           d > 500   ? '#FEB24C' :
+           d > 5   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.DEC_10_SF1_P1_with_ann_D001),
+        weight: 1,
+        opacity: 0.6,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.6
+    };
+}
+
+// L.geoJson(populationLayer, {style: style}).addTo(map);
 populationLayer.addTo(map);
 //stopsLayer.addTo(map);
 
@@ -26,6 +49,8 @@ var baseLayers = {
   "Aerial Imagery": mapquestOAM,
   "Imagery with Streets": mapquestHYB
 };
+
+// L.geoJson(populationLayer, {style: style}).addTo(map);
 
 var overlays = {
 };
