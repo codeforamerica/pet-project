@@ -44,20 +44,8 @@ if (document.body.clientWidth <= 767) {
   var isCollapsed = false;
 }
 
-var baseLayers = {
-  "Street Map": mapquestOSM,
-  "Aerial Imagery": mapquestOAM,
-  "Imagery with Streets": mapquestHYB
-};
-
-// L.geoJson(populationLayer, {style: style}).addTo(map);
-
 var overlays = {
 };
-
-var layerControl = L.control.layers(baseLayers, overlays, {
-  collapsed: isCollapsed
-}).addTo(map);
 
 /* Add overlay layers to map after defining layer control to preserver order */
 //map.addLayer(boroughs).addLayer(theaters);
@@ -86,3 +74,15 @@ if (navigator.appName == "Microsoft Internet Explorer") {
     }
   });
 }
+
+(function(tracts){
+  var adoptions = 0;
+  var shelter = new PetProject.Models.Feature({geometry: {coordinates: [45.518867, -122.665408]}});
+  var population = new PetProject.Collections.PopulationScorable();
+  population.reset(population.parse(tracts));
+
+  setInterval(function(){
+    adoptions += population.toMultiplier(shelter)
+    console.log("adoptions: " + population.toMultiplier(shelter));
+  }, 250);
+})(popTracts);
