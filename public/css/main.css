@@ -56,6 +56,11 @@ input[type="radio"], input[type="checkbox"] {
 .typeahead {
   background-color: #FFFFFF;
 }
+
+.btn {
+  background-color: #FF7771;
+  border-color: #e56c66;
+}
 .tt-dropdown-menu {
   background-color: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -115,6 +120,25 @@ input[type="radio"], input[type="checkbox"] {
   top: 5px;
   background: transparent;
 }
+
+#layer-control {
+  /*font-family: 'Lora', 'serif';*/
+  position: absolute;
+  z-index: 800;
+  margin-top: 500px;
+  margin-right: 10px;
+}
+
+#layer-control img {
+  height: 40px;
+  min-width: 10px;
+}
+
+#layer-control button {
+  /*color: #f9d0ce;*/
+  color: white;
+}
+
 @media (max-width: 992px) {
   .navbar .navbar-brand {
     font-size: 18px;
