@@ -14,13 +14,19 @@ describe("PetProject.Models.Feature", function(){
 
   describe("an instantiated copy", function(){
     beforeEach(function(){
-      this.feature = new PetProject.Models.Feature();
-      this.feature.set(this.jsonFixture["feature.json"]);
+      this.feature = new PetProject.Models.Feature(this.jsonFixture["feature.json"]);
     });
 
     describe("#toMultiplier", function(){
       it("returns a multiplier for the feature", function(){
         expect(this.feature.toMultiplier()).toEqual(1);
+      });
+    });
+
+    describe("#toBounds", function(){
+      it("returns bounds for the feature", function(){
+        expect(this.feature.toBounds()._southWest.lat).toEqual(-122.686434);
+        expect(this.feature.toBounds()._southWest.lng).toEqual(45.512014);
       });
     });
   });
