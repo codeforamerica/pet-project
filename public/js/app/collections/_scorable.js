@@ -6,11 +6,7 @@ PetProject.Collections.Scorable = Backbone.Collection.extend({
   },
   toMultiplier: function(base){
     return this.reduce(function(memo, model){
-      return memo * model.toMultiplier(base);
+      return memo * Math.max(1, model.toMultiplier(base));
     }, 1);
   }
-});
-
-PetProject.Collections.PopulationScorable = PetProject.Collections.Scorable.extend({
-  model: PetProject.Models.PopulationFeature
 });

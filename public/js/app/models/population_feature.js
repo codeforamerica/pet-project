@@ -1,6 +1,6 @@
 PetProject.Models.PopulationFeature = PetProject.Models.Feature.extend({
   toBounds: function(){
-    if (!this.bounds) { this.bounds = L.latLngBounds(this.get('geometry').coordinates); }
+    if (!this.bounds) { this.bounds = L.geoJson(this.attributes).getBounds(); }
     return this.bounds;
   },
   toMultiplier: function(other_feature){

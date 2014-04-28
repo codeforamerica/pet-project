@@ -4,10 +4,7 @@ PetProject.Models.Feature = Backbone.Model.extend({
   },
   toBounds: function() {
     if (!this.bounds) {
-      this.bounds = L.latLngBounds(
-        this.get('geometry').coordinates,
-        this.get('geometry').coordinates
-      );
+      this.bounds = L.geoJson(this.attributes).getBounds();
     }
     return this.bounds;
   }
