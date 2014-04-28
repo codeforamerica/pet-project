@@ -28,7 +28,23 @@ input[type="radio"], input[type="checkbox"] {
 .navbar .navbar-brand {
   font-weight: bold;
   font-size: 25px;
-  color: white;
+  color: white; 
+}
+
+.navbar-nav > li > a{
+  padding-top: 20px;
+  color: #FFF !important;
+}
+
+.navbar-brand img {
+  max-height: 35px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.navbar-inverse {
+  background-color: #34a5b4;
+  border-color: #267984;
 }
 .navbar-collapse.in {
   overflow-y: hidden;
