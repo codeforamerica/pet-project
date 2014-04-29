@@ -39,9 +39,20 @@
         <a class="navbar-brand" href="#"><img src="img/paw-love-powder.png">Pet Project</a>
       </div>
       <div class="navbar-collapse collapse">
-          <div class="navbar-right">
-              <h3>You have saved <span id="adoption-count">0</span> pets!</h3>
-          </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              You have saved <span id="adoption-count">0</span> pets! <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">From population: <span id="population-adoption-count">0</span></a></li>
+              <li><a href="#">From parks: <span id="park-adoption-count">0</span></a></li>
+              <li><a href="#">From vets: <span id="vet-adoption-count">0</span></a></li>
+              <li><a href="#">From pet stores: <span id="pet-store-adoption-count">0</span></a></li>
+              <li><a href="#">From bus stops: <span id="bus-stop-adoption-count">0</span></a></li>
+            </ul>
+          </li>
+        </ul>
         <ul class="nav navbar-nav">
           <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;"><i class="fa fa-list" style="color: white"></i>&nbsp;&nbsp;Sidebar</a></li>
         </ul>
@@ -230,10 +241,12 @@
     <script src="js/vendor/_underscore.js"></script>
     <script src="js/vendor/backbone.js"></script>
     <script src="js/app/petproject.js"></script>
-    <script src="js/app/models/feature.js"></script>
+    <script src="js/app/models/_feature.js"></script>
     <script src="js/app/models/population_feature.js"></script>
+    <script src="js/app/models/distant_feature.js"></script>
     <script src="js/app/collections/_scorable.js"></script>
     <script src="js/app/collections/population_scorable.js"></script>
+    <script src="js/app/collections/distance_scorable.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
