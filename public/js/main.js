@@ -3,7 +3,7 @@ var map;
 var populationLayer = L.geoJson(popTracts, {style: tractStyle});
 var stopsLayer = L.geoJson(transitStops, {
   pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, {color: 'black', fullOpacity: 1.0});
+    return L.circleMarker(latlng, {color: 'black', fillOpacity: 1.0});
   }
 });
 var vetsLayer = L.geoJson(vets, {
