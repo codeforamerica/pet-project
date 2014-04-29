@@ -3,18 +3,18 @@ var map;
 var populationLayer = L.geoJson(popTracts, {style: tractStyle});
 var stopsLayer = L.geoJson(transitStops, {
   pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, {color: 'black', fillOpacity: 1.0});
+    return L.circleMarker(latlng, {color: '#C65B6F', fillOpacity: 1.0});
   }
 });
 var vetsLayer = L.geoJson(vets, {
   pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, {color: 'red', fillOpacity: 1.0});
+    return L.circleMarker(latlng, {color: '#8a8acb', fillOpacity: 1.0});
   }
 });
 var parksLayer = L.geoJson(pdxParks, {style: parksStyle});
 var petstoreLayer = L.geoJson(petStores, {
   pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, {color: 'purple', fillOpacity: 1.0});
+    return L.circleMarker(latlng, {color: '#67AAD5', fillOpacity: 1.0});
   }
 });
 
