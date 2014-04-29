@@ -154,17 +154,17 @@ if (navigator.appName == "Microsoft Internet Explorer") {
       var populationBase = population.toMultiplier(shelter);
 
       var storeMultiplier = 1.15 * pet_store_locations.toMultiplier(shelter);
-      var vetMultiplier = 1.25 * vet_locations.toMultiplier(shelter);
+      var vetMultiplier = 1.5 * vet_locations.toMultiplier(shelter);
       var parkMultiplier = 1.1 * park_locations.toMultiplier(shelter);
       var busStopMultiplier = bus_stop_locations.toMultiplier(shelter);
 
       adoptions += (populationBase * storeMultiplier * vetMultiplier * parkMultiplier * busStopMultiplier);
 
       $('#population-adoption-count').text(Math.floor(populationBase));
-      $('#pet-store-adoption-count').text(Math.floor(storeMultiplier));
-      $('#vet-adoption-count').text(Math.floor(vetMultiplier));
-      $('#park-adoption-count').text(Math.floor(parkMultiplier));
-      $('#bus-stop-adoption-count').text(Math.floor(busStopMultiplier));
+      $('#pet-store-adoption-count').text(Math.floor(storeMultiplier * 100));
+      $('#vet-adoption-count').text(Math.floor(vetMultiplier * 100));
+      $('#park-adoption-count').text(Math.floor(parkMultiplier * 100));
+      $('#bus-stop-adoption-count').text(Math.floor(busStopMultiplier * 100));
       $('#adoption-count').text(Math.floor(adoptions / 10000));
     }
   }, 250);
