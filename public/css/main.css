@@ -28,16 +28,24 @@ input[type="radio"], input[type="checkbox"] {
 .navbar .navbar-brand {
   font-weight: bold;
   font-size: 25px;
-  color: white; 
+  color: #CCF7FF; 
 }
 
 .navbar-nav > li > a{
   padding-top: 20px;
-  color: #FFF !important;
+  color: #CCF7FF !important;
 }
 
 .navbar-right {
   padding-right: 10px;
+}
+
+.navbar-right h3 {
+  color: #FFF;
+}
+
+i {
+  color: #CCF7FF !important;
 }
 
 .navbar-brand img {
@@ -47,7 +55,7 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .navbar-inverse {
-  background-color: #34a5b4;
+  background-color: #46b8da;
   border-color: #267984;
 }
 .navbar-collapse.in {
