@@ -118,6 +118,32 @@ if (navigator.appName == "Microsoft Internet Explorer") {
   });
 }
 
+$('.custom-layer-control .btn').click(function(e){
+  var purpose = $(e.currentTarget).data('purpose');
+  console.log(purpose);
+  switch (purpose) {
+    case 'num-people':
+      map.removeLayer(populationLayer);
+      break;
+
+    case 'pet-stores':
+      map.removeLayer(petstoreLayer);
+      break;
+
+    case 'vets':
+      map.removeLayer(vetsLayer);
+      break;
+
+    case 'parks':
+      map.removeLayer(parksLayer);
+      break;
+
+    case 'bus-stops':
+      map.removeLayer(stopsLayer);
+      break;
+  }
+});
+
 (function(tracts){
   var adoptions = 0;
   var population = new PetProject.Collections.PopulationScorable();
