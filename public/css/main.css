@@ -66,13 +66,13 @@ i {
 }
 
 .btn {
-  background-color: #FF7771;
-  border-color: #e56c66;
+  background-color: #FF7771 !important;
+  border-color: #e56c66i !important;
 }
 
 .btn.active {
-  background-color: #39b3d7;
-  border-color: #269abc;
+  background-color: #39b3d7 !important;
+  border-color: #269abci !important;
 }
 
 .tt-dropdown-menu {

@@ -68,7 +68,7 @@ function parksStyle(feature) {
 }
 
 // L.geoJson(populationLayer, {style: style}).addTo(map);
-populationLayer.addTo(map);
+//populationLayer.addTo(map);
 //stopsLayer.addTo(map);
 
 /* Larger screens get expanded layer control */
@@ -131,28 +131,39 @@ if (navigator.appName == "Microsoft Internet Explorer") {
 }
 
 $('.custom-layer-control .btn').click(function(e){
-  var purpose = $(e.currentTarget).data('purpose');
-  console.log(purpose);
+  var target = e.currentTarget;
+  var purpose = $(target).data('purpose');
+  var layer = null;
+
   switch (purpose) {
     case 'num-people':
-      map.removeLayer(populationLayer);
+      layer = populationLayer;
       break;
 
     case 'pet-stores':
-      map.removeLayer(petstoreLayer);
+      layer = petstoreLayer;
       break;
 
     case 'vets':
-      map.removeLayer(vetsLayer);
+      layer = vetsLayer;
       break;
 
     case 'parks':
-      map.removeLayer(parksLayer);
+      layer = parksLayer;
       break;
 
     case 'bus-stops':
-      map.removeLayer(stopsLayer);
+      layer = stopsLayer
       break;
+  }
+
+  if ($(target).hasClass('active')) {
+    $(target).removeClass('active');
+    map.removeLayer(layer);
+  }
+  else {
+    $(target).addClass('active');
+    map.addLayer(layer);
   }
 });
 
