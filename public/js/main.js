@@ -193,7 +193,12 @@ $('.custom-layer-control .btn').click(function(e){
     bus_stop_locations: bus_stop_locations
   });
 
+  var clockView = new PetProject.Views.Clock();
+
+  view.render();
   setInterval(function(){
     view.render();
+    clockView.render();
+    clockView.advance();
   }, 250);
 })(popTracts, petStores, vets, pdxParks, transitStops);

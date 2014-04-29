@@ -40,7 +40,10 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown" id="score-area"></li>
+          <li class="dropdown" id="score-area">
+            <a href="#">You haven't placed a shelter yet!</a>
+          </li>
+          <li><a id="clock-area"></a></li>
         </ul>
         <ul class="nav navbar-nav">
           <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;"><i class="fa fa-list" style="color: white"></i>&nbsp;&nbsp;How do I play?</a></li>
@@ -218,6 +221,10 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <script type="text/template" id="clock-template">
+      <%= [ "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December" ][date.getMonth()] %> <%= date.getDate() %>
+    </script>
 
     <script type="text/template" id="score-template">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -252,6 +259,7 @@
     <script src="js/app/collections/population_scorable.js"></script>
     <script src="js/app/collections/distance_scorable.js"></script>
     <script src="js/app/views/score.js"></script>
+    <script src="js/app/views/clock.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
