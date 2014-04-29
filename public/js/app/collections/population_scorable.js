@@ -3,7 +3,7 @@ PetProject.Collections.PopulationScorable = PetProject.Collections.Scorable.exte
   toMultiplier: function(base){
     return this.reduce(function(memo, model){
       var population = model.toMultiplier(base);
-      return memo + model.toMultiplier(base);
+      return memo + population;
     }, 0);
   }
 });
