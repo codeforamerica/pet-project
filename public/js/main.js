@@ -184,25 +184,16 @@ $('.custom-layer-control .btn').click(function(e){
   var bus_stop_locations = new PetProject.Collections.DistanceScorable();
   bus_stop_locations.reset(bus_stop_locations.parse(bus_stop_json));
 
+  var view = new PetProject.Views.Score({
+    drawnItems: drawnItems,
+    population: population,
+    pet_store_locations: pet_store_locations,
+    vet_locations: vet_locations,
+    park_locations: park_locations,
+    bus_stop_locations: bus_stop_locations
+  });
+
   setInterval(function(){
-    var petStore = drawnItems.toGeoJSON().features[0];
-    if (petStore) {
-      var shelter = new PetProject.Models.Feature(petStore);
-      var populationBase = population.toMultiplier(shelter);
-
-      var storeMultiplier = 1.15 * pet_store_locations.toMultiplier(shelter);
-      var vetMultiplier = 1.5 * vet_locations.toMultiplier(shelter);
-      var parkMultiplier = 1.1 * park_locations.toMultiplier(shelter);
-      var busStopMultiplier = bus_stop_locations.toMultiplier(shelter);
-
-      adoptions += (populationBase * storeMultiplier * vetMultiplier * parkMultiplier * busStopMultiplier);
-
-      $('#population-adoption-count').text(Math.floor(populationBase));
-      $('#pet-store-adoption-count').text(Math.floor(storeMultiplier * 100));
-      $('#vet-adoption-count').text(Math.floor(vetMultiplier * 100));
-      $('#park-adoption-count').text(Math.floor(parkMultiplier * 100));
-      $('#bus-stop-adoption-count').text(Math.floor(busStopMultiplier * 100));
-      $('#adoption-count').text(Math.floor(adoptions / 10000));
-    }
+    view.render();
   }, 250);
 })(popTracts, petStores, vets, pdxParks, transitStops);
