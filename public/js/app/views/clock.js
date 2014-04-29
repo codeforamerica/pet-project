@@ -9,7 +9,7 @@ PetProject.Views.Clock = Backbone.View.extend({
 
   advance: function(){
     this.ticks += 1;
-    if (this.ticks % 10 == 0) {
+    if (this.ticks % 5 == 0) {
       this.gameDate.setDate(this.gameDate.getDate() + 1);
     }
 
