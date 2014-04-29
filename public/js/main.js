@@ -130,17 +130,42 @@ if (navigator.appName == "Microsoft Internet Explorer") {
   });
 }
 
-(function(tracts){
+(function(population_json, pet_store_json, vet_json, park_json, bus_stop_json){
   var adoptions = 0;
   var population = new PetProject.Collections.PopulationScorable();
-  population.reset(population.parse(tracts));
+  population.reset(population.parse(population_json));
+
+  var pet_store_locations = new PetProject.Collections.DistanceScorable();
+  pet_store_locations.reset(pet_store_locations.parse(pet_store_json));
+
+  var vet_locations = new PetProject.Collections.DistanceScorable();
+  vet_locations.reset(vet_locations.parse(vet_json));
+
+  var park_locations = new PetProject.Collections.DistanceScorable();
+  park_locations.reset(park_locations.parse(park_json));
+
+  var bus_stop_locations = new PetProject.Collections.DistanceScorable();
+  bus_stop_locations.reset(bus_stop_locations.parse(bus_stop_json));
 
   setInterval(function(){
     var petStore = drawnItems.toGeoJSON().features[0];
     if (petStore) {
       var shelter = new PetProject.Models.Feature(petStore);
-      adoptions += population.toMultiplier(shelter);
+      var populationBase = population.toMultiplier(shelter);
+
+      var storeMultiplier = 1.15 * pet_store_locations.toMultiplier(shelter);
+      var vetMultiplier = 1.5 * vet_locations.toMultiplier(shelter);
+      var parkMultiplier = 1.1 * park_locations.toMultiplier(shelter);
+      var busStopMultiplier = bus_stop_locations.toMultiplier(shelter);
+
+      adoptions += (populationBase * storeMultiplier * vetMultiplier * parkMultiplier * busStopMultiplier);
+
+      $('#population-adoption-count').text(Math.floor(populationBase));
+      $('#pet-store-adoption-count').text(Math.floor(storeMultiplier * 100));
+      $('#vet-adoption-count').text(Math.floor(vetMultiplier * 100));
+      $('#park-adoption-count').text(Math.floor(parkMultiplier * 100));
+      $('#bus-stop-adoption-count').text(Math.floor(busStopMultiplier * 100));
       $('#adoption-count').text(Math.floor(adoptions / 10000));
     }
   }, 250);
-})(popTracts);
+})(popTracts, petStores, vets, pdxParks, transitStops);
